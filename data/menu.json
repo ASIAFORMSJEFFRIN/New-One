@@ -1,0 +1,109 @@
+{
+  "hotel": {
+    "name": "LUMIÈRE",
+    "logo": "assets/logo.png",
+    "description": "Where culinary artistry meets the future of dining. Scan. Discover. Experience.",
+    "address": "123 Gourmet Avenue, Mumbai 400001",
+    "phone": "+91 98765 43210",
+    "email": "hello@lumiere.in"
+  },
+  "categories": ["Starters", "Main Course", "Desserts", "Drinks"],
+  "dishes": [
+    {
+      "id": "dish-001",
+      "name": "Paneer Tikka",
+      "price": 320,
+      "description": "Smoky charcoal-grilled cottage cheese cubes marinated in yogurt, saffron, and house spices. Served with mint chutney and pickled onions.",
+      "type": "veg",
+      "category": "Starters",
+      "modelGlb": "models/paneer-tikka/model.glb",
+      "modelUsdz": "models/paneer-tikka/model.usdz",
+      "thumbnail": "models/paneer-tikka/poster.jpg",
+      "featured": true
+    },
+    {
+      "id": "dish-002",
+      "name": "Butter Chicken",
+      "price": 480,
+      "description": "Slow-simmered free-range chicken in a velvety tomato-cashew gravy with aged butter and fenugreek. A timeless classic elevated.",
+      "type": "non-veg",
+      "category": "Main Course",
+      "modelGlb": "models/butter-chicken/model.glb",
+      "modelUsdz": "models/butter-chicken/model.usdz",
+      "thumbnail": "models/butter-chicken/poster.jpg",
+      "featured": true
+    },
+    {
+      "id": "dish-003",
+      "name": "Dal Makhani",
+      "price": 290,
+      "description": "Black lentils slow-cooked overnight on a charcoal flame, finished with cream and a whisper of smoked butter.",
+      "type": "veg",
+      "category": "Main Course",
+      "modelGlb": "",
+      "modelUsdz": "",
+      "thumbnail": "",
+      "featured": false
+    },
+    {
+      "id": "dish-004",
+      "name": "Gulab Jamun",
+      "price": 140,
+      "description": "Soft milk-solid dumplings soaked in cardamom-rose syrup, served warm with vanilla kulfi.",
+      "type": "veg",
+      "category": "Desserts",
+      "modelGlb": "",
+      "modelUsdz": "",
+      "thumbnail": "",
+      "featured": false
+    },
+    {
+      "id": "dish-005",
+      "name": "Mango Lassi",
+      "price": 160,
+      "description": "Chilled Alphonso mango blended with strained yogurt, saffron, and a hint of cardamom. Topped with pistachio dust.",
+      "type": "veg",
+      "category": "Drinks",
+      "modelGlb": "",
+      "modelUsdz": "",
+      "thumbnail": "",
+      "featured": false
+    },
+    {
+      "id": "dish-006",
+      "name": "Seekh Kebab",
+      "price": 380,
+      "description": "Minced lamb and herb rolls grilled on iron skewers over live coals. Served with charred peppers and saffron aioli.",
+      "type": "non-veg",
+      "category": "Starters",
+      "modelGlb": "",
+      "modelUsdz": "",
+      "thumbnail": "",
+      "featured": false
+    },
+    {
+      "id": "dish-007",
+      "name": "Rasmalai",
+      "price": 160,
+      "description": "Chilled cottage cheese rounds soaked in condensed milk, perfumed with rose water, pistachios, and silver leaf.",
+      "type": "veg",
+      "category": "Desserts",
+      "modelGlb": "",
+      "modelUsdz": "",
+      "thumbnail": "",
+      "featured": false
+    },
+    {
+      "id": "dish-008",
+      "name": "Virgin Mojito",
+      "price": 180,
+      "description": "Fresh lime, muddled mint, raw cane sugar, and sparkling water. Light, refreshing, and endlessly elegant.",
+      "type": "veg",
+      "category": "Drinks",
+      "modelGlb": "",
+      "modelUsdz": "",
+      "thumbnail": "",
+      "featured": false
+    }
+  ]
+}

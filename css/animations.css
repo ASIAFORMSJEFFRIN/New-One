@@ -1,0 +1,98 @@
+/* ============================================================
+   animations.css — Keyframes & reveal animations
+   ============================================================ */
+
+/* ---------- Keyframes ---------- */
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-20px, 15px) scale(0.97); }
+}
+@keyframes orbPulse {
+  0%, 100% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
+  50%       { opacity: 0.9; transform: translate(-50%,-50%) scale(1.15); }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50%       { opacity: 0.4; transform: scaleY(0.7); }
+}
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes cardPop {
+  0%   { opacity: 0; transform: translateY(24px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 12px var(--gold-glow); }
+  50%       { box-shadow: 0 0 30px rgba(201,168,76,0.4); }
+}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.delay-1 { transition-delay: 0.12s; }
+.delay-2 { transition-delay: 0.24s; }
+.delay-3 { transition-delay: 0.36s; }
+.delay-4 { transition-delay: 0.48s; }
+
+/* ---------- Dish cards stagger ---------- */
+.dish-card {
+  opacity: 0;
+  animation: cardPop 0.5s ease forwards;
+}
+.dish-card:nth-child(1)  { animation-delay: 0.05s; }
+.dish-card:nth-child(2)  { animation-delay: 0.10s; }
+.dish-card:nth-child(3)  { animation-delay: 0.15s; }
+.dish-card:nth-child(4)  { animation-delay: 0.20s; }
+.dish-card:nth-child(5)  { animation-delay: 0.25s; }
+.dish-card:nth-child(6)  { animation-delay: 0.30s; }
+.dish-card:nth-child(7)  { animation-delay: 0.35s; }
+.dish-card:nth-child(8)  { animation-delay: 0.40s; }
+.dish-card:nth-child(n+9){ animation-delay: 0.45s; }
+
+/* ---------- Skeleton loader ---------- */
+.skeleton {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--surface2) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- model-viewer custom style ---------- */
+model-viewer {
+  --progress-bar-color: var(--gold);
+  --progress-bar-height: 2px;
+  background: transparent;
+}
+model-viewer::part(default-ar-button) {
+  display: none; /* We use our own AR button */
+}
+
+/* ---------- CTA glow animation ---------- */
+.cta-btn { animation: neonPulse 4s ease-in-out infinite; }
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }

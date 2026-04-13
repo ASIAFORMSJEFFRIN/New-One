@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel · AR Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&family=Syncopate:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-body">
+
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-brand">
+      <span class="nav-brand">ADMIN</span>
+      <span class="sidebar-sub">Menu Manager</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#hotel-section" class="slink active" data-section="hotel-section">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 9h6M9 6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Hotel Info
+      </a>
+      <a href="#dishes-section" class="slink" data-section="dishes-section">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M9 5v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Dishes
+      </a>
+      <a href="#categories-section" class="slink" data-section="categories-section">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 4h12M3 9h8M3 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Categories
+      </a>
+    </nav>
+    <div class="sidebar-actions">
+      <button class="admin-btn primary" id="export-btn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 6l4 4 4-4M2 14h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Export JSON
+      </button>
+      <label class="admin-btn secondary" for="import-file">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14V6M4 10l4-4 4 4M2 2h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Import JSON
+        <input type="file" id="import-file" accept=".json" hidden />
+      </label>
+      <a href="index.html" class="admin-btn ghost">← Back to Menu</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="admin-main">
+
+    <!-- HOTEL INFO -->
+    <section class="admin-section" id="hotel-section">
+      <div class="admin-section-header">
+        <h2>Hotel Information</h2>
+        <p>These details appear on your public menu page.</p>
+      </div>
+      <div class="admin-card">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Hotel Name</label>
+            <input type="text" id="hotel-name" placeholder="e.g. LUMIÈRE" />
+          </div>
+          <div class="form-group">
+            <label>Logo Path</label>
+            <input type="text" id="hotel-logo" placeholder="assets/logo.png" />
+          </div>
+          <div class="form-group full">
+            <label>Description</label>
+            <textarea id="hotel-desc" rows="3" placeholder="Short tagline or description…"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" id="hotel-address" placeholder="123 Gourmet Avenue, City" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="text" id="hotel-phone" placeholder="+91 00000 00000" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" id="hotel-email" placeholder="hello@hotel.com" />
+          </div>
+        </div>
+        <button class="admin-btn primary" id="save-hotel-btn">Save Hotel Info</button>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="admin-section" id="categories-section">
+      <div class="admin-section-header">
+        <h2>Categories</h2>
+        <p>Manage the dish categories shown in the filter bar.</p>
+      </div>
+      <div class="admin-card">
+        <div class="cat-input-row">
+          <input type="text" id="cat-input" placeholder="New category name…" />
+          <button class="admin-btn primary small" id="add-cat-btn">Add</button>
+        </div>
+        <div class="cat-list" id="cat-list"></div>
+      </div>
+    </section>
+
+    <!-- DISHES -->
+    <section class="admin-section" id="dishes-section">
+      <div class="admin-section-header">
+        <h2>Dishes</h2>
+        <p>Add, edit, or remove dishes from your menu.</p>
+        <button class="admin-btn primary" id="open-add-dish-btn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Add Dish
+        </button>
+      </div>
+
+      <!-- Dish Form (shown inline) -->
+      <div class="admin-card dish-form-card hidden" id="dish-form-card">
+        <h3 id="dish-form-title">Add Dish</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Dish Name *</label>
+            <input type="text" id="d-name" placeholder="e.g. Paneer Tikka" />
+          </div>
+          <div class="form-group">
+            <label>Price (₹) *</label>
+            <input type="number" id="d-price" placeholder="220" min="0" />
+          </div>
+          <div class="form-group full">
+            <label>Description</label>
+            <textarea id="d-desc" rows="3" placeholder="Short description of the dish…"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="d-category"></select>
+          </div>
+          <div class="form-group">
+            <label>Type</label>
+            <select id="d-type">
+              <option value="veg">Veg</option>
+              <option value="non-veg">Non-Veg</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Thumbnail Image Path</label>
+            <input type="text" id="d-thumb" placeholder="models/dish-name/poster.jpg" />
+          </div>
+          <div class="form-group">
+            <label>.GLB Model Path</label>
+            <input type="text" id="d-glb" placeholder="models/dish-name/model.glb" />
+          </div>
+          <div class="form-group">
+            <label>.USDZ Model Path (iOS)</label>
+            <input type="text" id="d-usdz" placeholder="models/dish-name/model.usdz" />
+          </div>
+          <div class="form-group">
+            <label>Featured?</label>
+            <select id="d-featured">
+              <option value="false">No</option>
+              <option value="true">Yes</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="admin-btn primary" id="save-dish-btn">Save Dish</button>
+          <button class="admin-btn ghost" id="cancel-dish-btn">Cancel</button>
+        </div>
+        <input type="hidden" id="d-id" />
+      </div>
+
+      <!-- Dish Table -->
+      <div class="admin-card">
+        <div class="dish-table-wrap">
+          <table class="dish-table" id="dish-table">
+            <thead>
+              <tr>
+                <th>Dish</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Type</th>
+                <th>3D Model</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="dish-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+
+<script type="module" src="js/data.js"></script>
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>
